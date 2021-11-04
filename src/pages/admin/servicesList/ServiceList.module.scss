@@ -1,0 +1,13 @@
+
+.container{
+   display: flex;
+   background:var(--gray-backg);
+   height: 100vh;
+}
+
+.panel{
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   overflow: unset;
+}
