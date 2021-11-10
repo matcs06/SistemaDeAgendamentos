@@ -20,7 +20,7 @@ const SideBar: React.FC = () => {
        document.documentElement.style.setProperty('--sidebar-width', "0px");
        document.documentElement.style.setProperty('--display-header', "none");
     }else{
-       document.documentElement.style.setProperty('--sidebar-width', "250px");
+       document.documentElement.style.setProperty('--sidebar-width', "280px");
        document.documentElement.style.setProperty('--display-header', "flex");
     }
   });
@@ -34,7 +34,7 @@ const SideBar: React.FC = () => {
         document.documentElement.style.setProperty('--display-header', "none");
      }else{
         setSideBarContainer("styles.sidebarContainer")
-        document.documentElement.style.setProperty('--sidebar-width', "250px");
+        document.documentElement.style.setProperty('--sidebar-width', "280px");
         document.documentElement.style.setProperty('--display-header', "flex");
      }
 
