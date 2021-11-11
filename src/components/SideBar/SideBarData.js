@@ -13,7 +13,7 @@ export const SideBarData = [
     {
       title: "Agendamentos",
       icon: <EventIcon />,
-      link: "openServices/"
+      link: "admin/openSchedules/"
    },
     {
       title: "Criar Serviço",
@@ -28,6 +28,6 @@ export const SideBarData = [
      {
       title: "Ver Horário",
       icon: <FindInPageIcon />,
-      link: "/"
+      link: "/admin/availabilityInquiry"
    }
 ]

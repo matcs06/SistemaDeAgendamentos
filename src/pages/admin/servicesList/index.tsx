@@ -1,10 +1,10 @@
 import SideBar from "../../../components/SideBar"
-import styles from "./ServiceList.module.scss"
+import styles from "./serviceList.module.scss"
 
 export default function ServicesList(){
    return(
       <div className={styles.container}>
-         <SideBar/>
+         <SideBar/>         
          <div className={styles.panel}>
             
             <div className={styles.card}>
