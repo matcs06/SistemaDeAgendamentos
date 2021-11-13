@@ -23,7 +23,7 @@ export const SideBarData = [
     {
       title: "Criar Horário",
       icon: <MoreTimeIcon />,
-      link: "/"
+      link: "/admin/createAvailability"
    },
      {
       title: "Ver Horário",
