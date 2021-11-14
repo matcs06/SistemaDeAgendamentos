@@ -26,12 +26,8 @@ export default function AvailabilityInquiry(){
                   <div className={styles.deleteContainer} onClick={handleDelete}>
                     <DeleteForeverIcon sx={{fontSize:30}}/>
                   </div>
-               </div>
-               
+               </div>       
             </div>
-            
-            
-
          </div>
          
       </div>

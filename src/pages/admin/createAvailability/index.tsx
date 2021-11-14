@@ -6,8 +6,11 @@ import Button from "../../../components/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+
 import { registerLocale } from  "react-datepicker";
+import {validateMorningTime, validateAfternoonTime} from "./utils.js"
 import pt from "date-fns/locale/pt-BR"
+
 
 export default function CreateAvailability() {
 
@@ -18,9 +21,16 @@ export default function CreateAvailability() {
    const [afternoonTo, setAfternoonTo] = useState()
 
    registerLocale('pt', pt)
+  
 
    const handlePickedDate = (date) =>{
       setPickedDate(date)
+   }
+
+   const handleCreate = ()=>{
+      validateMorningTime(morningFrom, morningTo);
+      validateAfternoonTime(afternoonFrom, afternoonTo)
+      console.log(morningFrom, morningTo)
    }
   
    return(
@@ -40,7 +50,7 @@ export default function CreateAvailability() {
                 <Input type="time" placeholder="as" name="toA" setFieldValue={setAfternoonTo}/>
              </div>
              <div className={styles.buttonContainer}>
-                <Button page="login" handleClick={()=>{}} >Criar</Button>
+                <Button page="/admin/createAvailability" handleClick={handleCreate} >Criar</Button>
                 <Button page="login" handleClick={()=>{}} >Voltar</Button>
              </div>
               

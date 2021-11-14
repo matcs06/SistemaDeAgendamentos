@@ -12,10 +12,11 @@ export default function SignIn(){
    const [name, setName] = useState("");
    const [key, setKey] = useState("");
    
-   console.log(email, password, name, key)
+   
 
    const handleClick = () =>{
       console.log("Abriu funnção")
+      console.log(email, password, name, key)
    }
 
    return(
