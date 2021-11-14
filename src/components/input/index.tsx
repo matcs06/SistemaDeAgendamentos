@@ -5,6 +5,7 @@ interface InputProps{
    type: string;
    name: string;
    setFieldValue?: Function;
+   disabled?: string;
 }
 
 export default function Input(props:InputProps){
@@ -15,7 +16,7 @@ export default function Input(props:InputProps){
 
    return(
       <div className={styles.inputcontainer}>
-        <input onChange={handleSet} type={props.type} placeholder={props.placeholder} name={props.name}  />
+        <input onChange={handleSet} type={props.type} placeholder={props.placeholder} name={props.name} {...props} />
       </div>
    )
 }

@@ -18,7 +18,7 @@ export const SideBarData = [
     {
       title: "Criar Serviço",
       icon: <AddBoxIcon />,
-      link: "/"
+      link: "/admin/createService"
    },
     {
       title: "Criar Horário",

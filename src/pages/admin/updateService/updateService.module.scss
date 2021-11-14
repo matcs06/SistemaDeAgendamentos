@@ -25,37 +25,53 @@
    max-width: 500px;
    max-height: 473px;
    background: #231227;
+   overflow-x:hidden ;
    height: 100%;
-
-   input{
-      margin-top: 40px;
-      width: 60%;
-      margin-left: 20%;
-      height:35px;
-      text-align: center;
-      background: var(--gray-backg);
-      border-radius: 5px;
-      font-family: "Roboto";
-   }
-   
-
-   h3{
-      margin-top: 30px;
-      font-family: "Roboto";
-   }
-
+   padding-top: 40px;
 
 }
 
-.morningAfternoon{
+.serviceName{
    display: flex;
-   width: 55%;
+   width: 85%;
    align-items: center;
-   justify-content: center;
+   margin-top: 20px;
 
    input{
       border-radius: 2px;
       font-family: "Roboto";
+      text-align: center;
+      font-size: 14px;
+   }
+
+}
+.serviceDescription{
+   display: flex;
+   width: 85%;
+   align-items: center;
+   margin-top: 20px;
+
+   input{
+      border-radius: 2px;
+      font-family: "Roboto";
+      text-align: center;
+      font-size: 14px;
+
+   }
+
+}
+.valueAndDuration{
+   display: flex;
+   width: 70%;
+   align-items: center;
+   margin-top: 20px;
+
+   input{
+      border-radius: 2px;
+      font-family: "Roboto";
+      text-align: center;
+      font-size: 14px;
+      
    }
 
 }
@@ -63,4 +79,21 @@
 .buttonContainer{
    width: 90%;
    margin-top: 50px;
+}
+
+@media (max-width: 320px){
+   
+   .serviceName, .serviceDescription, .valueAndDuration{
+      input{
+      font-size: 12px;
+   }
+   }
+
+   .panel{
+      height: 90%;
+   }
+
+   
+
+
 }

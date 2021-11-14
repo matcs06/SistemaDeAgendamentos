@@ -12,6 +12,7 @@ export default function ServicesList(){
 
    const handleEdit = () =>{
       window.alert("Botão editar")
+      window.location.pathname = "/admin/updateService"
    }
 
    return(

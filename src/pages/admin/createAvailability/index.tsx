@@ -32,6 +32,10 @@ export default function CreateAvailability() {
       validateAfternoonTime(afternoonFrom, afternoonTo)
       console.log(morningFrom, morningTo)
    }
+
+   const handleBack = ()=>{
+      window.location.pathname = "/admin/servicesList"
+   }
   
    return(
       <div className={styles.container}>
@@ -51,7 +55,7 @@ export default function CreateAvailability() {
              </div>
              <div className={styles.buttonContainer}>
                 <Button page="/admin/createAvailability" handleClick={handleCreate} >Criar</Button>
-                <Button page="login" handleClick={()=>{}} >Voltar</Button>
+                <Button page="login" handleClick={handleBack} >Voltar</Button>
              </div>
               
          </div>       
