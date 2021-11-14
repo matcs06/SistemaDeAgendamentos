@@ -44,7 +44,7 @@ export default function OpenSchedules(){
                   <p>Serviço: Depilação</p>
                   <div className={styles.numberContainer}>
                      <p>Número: 11959842539</p>
-                     <div className={styles.wppIcon} onClick={()=>{window.alert("clicou")}}>
+                     <div className={styles.wppIcon} onClick={()=>{window.alert("clicou whatsapp")}}>
                         <WhatsAppIcon/>   
                      </div>
                      

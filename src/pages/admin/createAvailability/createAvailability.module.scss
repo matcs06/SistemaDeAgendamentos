@@ -2,10 +2,67 @@
    display: flex;
    background:var(--gray-backg);
    height: 100vh;
+   width: 100%;
    padding: 0;
    margin: 0;
 }
-
-.panel{
+.panelContainer{
+   display: flex;
+   flex-direction: column;
+   align-self: center;
+   justify-self: center;
+   height: 60%;
    width: 100%;
+   padding: 20px;
+}
+.panel{
+   border-radius: 5px;
+   flex-direction: column;
+   display: flex;
+   align-self: center;
+   justify-self: center;
+   align-items: center;
+   width: 100%;
+   max-width: 500px;
+   min-width: 315px;
+   max-height: 473px;
+   background: #231227;
+   height: 100%;
+
+   input{
+      margin-top: 40px;
+      width: 60%;
+      margin-left: 20%;
+      height:30px;
+      text-align: center;
+      background: var(--gray-backg);
+      border-radius: 5px;
+      font-family: "Roboto";
+   }
+   
+
+   h3{
+      margin-top: 30px;
+      font-family: "Roboto";
+   }
+
+
+}
+
+.morningAfternoon{
+   display: flex;
+   width: 55%;
+   align-items: center;
+   justify-content: center;
+
+   input{
+      border-radius: 2px;
+      font-family: "Roboto";
+   }
+
+}
+
+.buttonContainer{
+   width: 90%;
+   margin-top: 50px;
 }
