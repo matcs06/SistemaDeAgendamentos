@@ -13,6 +13,7 @@
    justify-self: center;
    height: 80%;
    width: 100%;
+   overflow-x:scroll ;
    padding: 5px;
 }
 .panel{
@@ -53,12 +54,9 @@
 .morningAfternoon{
    display: flex;
    width: 55%;
-   min-width: 245px;
    align-items: center;
    justify-content: center;
-
-   
-
+   padding: 5px;
    input{
       border-radius: 2px;
       font-family: "Roboto";
