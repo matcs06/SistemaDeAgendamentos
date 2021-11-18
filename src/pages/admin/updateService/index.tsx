@@ -36,7 +36,7 @@ export default function UpdateService() {
                 <Input disabled="disabled" type="time" placeholder="Duração" name="Duração" setFieldValue={setDuration}/>
              </div>
              <div className={styles.buttonContainer}>
-                <Button page="/admin/createAvailability" handleClick={handleCreate} >Update</Button>
+                <Button page="/admin/createAvailability" handleClick={handleCreate} >Atualizar</Button>
                 <Button page="login" handleClick={handleBack} >Voltar</Button>
              </div>
               
