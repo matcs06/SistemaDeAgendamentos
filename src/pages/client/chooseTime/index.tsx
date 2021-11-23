@@ -1,6 +1,9 @@
 import styles from "./ChooseTime.module.scss"
+import { withRouter } from 'next/router'
 
-export default function ChooseTime({serviceName}){
+function ChooseTime(props: any){
+
+    const serviceName = "asdas"
 
     const handleClick = ()=>{
         window.location.pathname = "/client/servicesList"
@@ -8,7 +11,7 @@ export default function ChooseTime({serviceName}){
 
     return(
         <div className={styles.container}>
-            <h2>Servico: `${serviceName}`</h2>
+            <h2>Servico: {props.router.query.serviceName}</h2>
 
             <h3>Escolha um dia</h3>
             <div className={styles.weekDays}>
@@ -32,8 +35,8 @@ export default function ChooseTime({serviceName}){
             <div className={styles.buttonContainer} onClick={handleClick}>
                 <button>Continuar</button>
             </div>
-
-
         </div>
     )
 }
+
+export default withRouter(ChooseTime);

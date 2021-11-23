@@ -3,9 +3,9 @@ import styles from "./updateService.module.scss"
 import SideBar from "../../../components/SideBar"
 import Input from "../../../components/input"
 import Button from "../../../components/Button";
+import { withRouter } from 'next/router'
 
-
-export default function UpdateService() {
+function UpdateService(props: any) {
 
    const [serviceName, setServiceName] = useState()
    const [serviceInfo, setServiceInfo] = useState()
@@ -26,7 +26,7 @@ export default function UpdateService() {
           <div className={styles.panelContainer}>
           <div className={styles.panel}>
             <div className={styles.serviceName}>
-                 <Input type="text" placeholder="Nome do serviço" name="Servico" setFieldValue={setServiceName}/>
+                 <Input type="text" placeholder={props.router.query.serviceName} name="Servico" setFieldValue={setServiceName}/>
              </div>
              <div className={styles.serviceDescription}>
                  <Input type="text" placeholder="Descrição do serviço" name="Descricao" setFieldValue={setServiceInfo}/>
@@ -45,3 +45,5 @@ export default function UpdateService() {
       </div>
    )
 }
+
+export default withRouter(UpdateService)

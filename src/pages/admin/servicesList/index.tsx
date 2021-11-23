@@ -1,8 +1,8 @@
 import SideBar from "../../../components/SideBar"
 import styles from "./serviceList.module.scss"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { fontSize } from "@mui/system";
 import EditIcon from '@mui/icons-material/Edit';
+import Router from 'next/router'
 
 export default function ServicesList(){
 
@@ -10,9 +10,12 @@ export default function ServicesList(){
       window.alert("Botão deletar")
    }
 
-   const handleEdit = () =>{
-      window.alert("Botão editar")
-      window.location.pathname = "/admin/updateService"
+   const handleEdit = (serviceName: string) =>{
+
+      Router.push({
+         pathname: '/admin/updateService',
+         query: { serviceName: serviceName }
+     })
    }
 
    return(
@@ -23,7 +26,7 @@ export default function ServicesList(){
             <div className={styles.card}>
                <div className={styles.topCardContainer}>
                    <h1>Design Natural</h1>
-                   <div className={styles.editContainer} onClick={handleEdit}>
+                   <div className={styles.editContainer} onClick={()=>handleEdit("design natural")}>
                       <EditIcon sx={{fontSize:30}}/>
                    </div>
                    <div className={styles.deleteContainer} onClick={handleDelete}>
