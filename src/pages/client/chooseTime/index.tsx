@@ -1,12 +1,15 @@
 import styles from "./chooseTime.module.scss"
-import { withRouter } from 'next/router'
+import Router, {withRouter } from 'next/router'
 
 function ChooseTime(props: any){
 
     const serviceName = "asdas"
 
-    const handleClick = ()=>{
-        window.location.pathname = "/client/servicesList"
+    const handleClick = (serviceName:string, price:string)=>{
+        Router.push({
+            pathname: '/client/customerInfo',
+            query: { serviceName, price }
+        })      
     }
 
     return(
@@ -46,7 +49,7 @@ function ChooseTime(props: any){
                 </div>
             </div>
 
-            <div className={styles.buttonContainer} onClick={handleClick}>
+            <div className={styles.buttonContainer} onClick={()=>handleClick("Design Natural", "15R$")}>
                 <button>Continuar</button>
             </div>
         </div>
