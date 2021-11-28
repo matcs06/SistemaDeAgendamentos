@@ -1,4 +1,4 @@
-import { withRouter } from "next/router"
+import Router, { withRouter } from "next/router"
 import { useState } from "react"
 import Input from "../../../components/input"
 import styles from "./customerInfo.module.scss"
@@ -10,6 +10,10 @@ function CustomerInfo(props:any){
 
     const handleClick = ()=>{
         console.log("Continuar")
+        Router.push({
+            pathname: '/client/finalScreen',
+            query:{valor: 15, serviceName: "Design natural", serviceTime: "11:00"}
+        })
     }
 
     return(
