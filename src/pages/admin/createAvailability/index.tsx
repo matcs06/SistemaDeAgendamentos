@@ -12,6 +12,7 @@ import {validateMorningTime, validateAfternoonTime} from "./utils.js"
 import pt from "date-fns/locale/pt-BR"
 
 
+
 export default function CreateAvailability() {
 
    const [picketDate, setPickedDate] = useState(new Date())
@@ -19,12 +20,31 @@ export default function CreateAvailability() {
    const [morningTo, setMorningTo] = useState()
    const [afternoonFrom, setAfternoonFrom] = useState()
    const [afternoonTo, setAfternoonTo] = useState()
+   const [formatedDate, setFormatedDate] = useState("")
 
    registerLocale('pt', pt)
-  
+   
+   const addZero = (value) => {
+      
+      if(value < 10 ){
+         value = '0' + value;   
+      }
+      return value
+   }
 
    const handlePickedDate = (date) =>{
       setPickedDate(date)
+
+      var month = date.getUTCMonth() + 1; //months from 1-12
+      var day = date.getUTCDate() - 1;
+      var year = date.getUTCFullYear();
+
+      day = addZero(day)
+      month = addZero(month)
+
+      const formatedDate = day + "/" + month + "/" + year
+      setFormatedDate(formatedDate)
+
    }
 
    const handleCreate = ()=>{
@@ -42,7 +62,8 @@ export default function CreateAvailability() {
           <SideBar/>
           <div className={styles.panelContainer}>
           <div className={styles.panel}>
-             <DatePicker locale="pt" selected={picketDate} onChange={(date)=>{handlePickedDate(date)}} />
+             <DatePicker className={styles.datePicker} locale="pt" selected={picketDate} onChange={(date)=>{handlePickedDate(date)}} />
+             <div className={styles.formatedDate}>{formatedDate}</div>
              <h3>Manhã</h3>
              <div className={styles.morningAfternoon}>
                 <Input type="time" placeholder="das" name="fromM" setFieldValue={setMorningFrom}/>
