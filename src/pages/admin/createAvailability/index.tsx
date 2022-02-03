@@ -20,7 +20,7 @@ export default function CreateAvailability() {
    const [morningTo, setMorningTo] = useState()
    const [afternoonFrom, setAfternoonFrom] = useState()
    const [afternoonTo, setAfternoonTo] = useState()
-   const [formatedDate, setFormatedDate] = useState("")
+   const [formatedDate, setFormatedDate] = useState("Selecione uma data")
 
    registerLocale('pt', pt)
    
