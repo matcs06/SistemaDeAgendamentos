@@ -3,63 +3,89 @@ import styles from "./serviceList.module.scss"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import Router from 'next/router'
+import { useEffect, useState } from "react";
+import api from "../../../api";
+
+interface ServiceFields {
+   id:string;
+   name:string;
+   description:string;
+   price:string;
+   duration:string;
+}
 
 export default function ServicesList(){
+   
+   const [items, setItems] = useState<ServiceFields[]>([]);
+   const [updateOnDelete, setUpdateOnDelete] = useState(false)
 
-   const handleDelete = () =>{
-      window.alert("Botão deletar")
-   }
-
-   const handleEdit = (serviceName: string) =>{
+   const handleEdit = (serviceName: string, serviceId:string, serviceDuration:string,
+   serviceDescription:string, serviceValue:string) =>{
 
       Router.push({
          pathname: '/admin/updateService',
-         query: { serviceName: serviceName }
+         query: { serviceName, serviceId, serviceDuration, serviceDescription, serviceValue }
      })
    }
+
+   useEffect(()=>{
+      async function loadItems() {
+         const token = localStorage.getItem("token");
+         const response = await api.get<ServiceFields[]>("/products", {
+         headers: { Authorization: "Bearer " + token },
+         });
+
+         setItems(response.data);
+         setUpdateOnDelete(false)
+      }
+      loadItems();
+      return () => {
+         setItems([]);
+      };
+   }, [updateOnDelete])
+
+   const deleteProduct = async (productId: string) => {
+    try {
+      const token = localStorage.getItem("token");
+      await api.delete(`/products/${productId}`,{
+          headers: { Authorization: "Bearer " + token },
+      })
+      setUpdateOnDelete(true)
+    } catch (error) {
+      window.alert("Erro ao deletar serviço")
+    }
+  }
 
    return(
       <div className={styles.container}>
          <SideBar/>         
          <div className={styles.panel}>
-            
-            <div className={styles.card}>
-               <div className={styles.topCardContainer}>
-                   <h1>Design Natural</h1>
-                   <div className={styles.editContainer} onClick={()=>handleEdit("design natural")}>
-                      <EditIcon sx={{fontSize:30}}/>
-                   </div>
-                   <div className={styles.deleteContainer} onClick={handleDelete}>
-                    <DeleteForeverIcon sx={{fontSize:30}}/>
+            {items && items.map((item)=>(
+               <div className={styles.card} key={item.id}>
+                  <div className={styles.topCardContainer}>
+                     <h1>{item.name}</h1>
+                     <div className={styles.editContainer} onClick={()=>handleEdit(item.name, item.id, item.duration, item.description, item.price)}>
+                        <EditIcon sx={{fontSize:30}}/>
+                     </div>
+                     <div className={styles.deleteContainer} onClick={()=>{deleteProduct(item.id)}}>
+                     <DeleteForeverIcon sx={{fontSize:30}}/>
+                     </div>
+
                   </div>
-
+               
+                  <ul>
+                     {item.description.split(",").map((descLine)=>(
+                     <li key={descLine}>
+                        {descLine}
+                     </li>
+                     ))}
+                  </ul>
+                  <div className={styles.cardBottom}>
+                     <h3>Duração: {item.duration} hrs</h3>
+                     <h3>{item.price} R$</h3>
+                  </div>
                </div>
-              
-               <ul>
-                  <li>
-                     Higienização
-                  </li>
-                  <li>
-                     Esfoliação
-                  </li>
-                  <li>
-                     Mapeamento
-                  </li>
-                  <li>
-                     Corte e pinçamento
-                  </li>
-                  <li>
-                     Aplicação com gilete
-                  </li>
-               </ul>
-               <div className={styles.cardBottom}>
-                  <h3>Duração: 3hrs</h3>
-                  <h3>15 R$</h3>
-               </div>
-            </div>
-
-          
-            
+            ))}
 
          </div>
          

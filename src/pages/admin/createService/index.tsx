@@ -3,6 +3,7 @@ import styles from "./createService.module.scss"
 import SideBar from "../../../components/SideBar"
 import Input from "../../../components/input"
 import Button from "../../../components/Button";
+import api from "../../../api";
 
 
 export default function CreateService() {
@@ -12,8 +13,28 @@ export default function CreateService() {
    const [value, setValue] = useState()
    const [duration, setDuration] = useState()
   
-   const handleCreate = ()=>{
-
+   const handleCreate = async ()=>{
+      const token = localStorage.getItem("token");
+      
+      try {
+         await api.post("/products", {
+            name: serviceName,
+            description: serviceInfo,
+            price: value,
+            duration: duration 
+            }, {
+               headers: {
+               Authorization: "Bearer " + token,
+            },
+         });
+         window.alert(`Produto ${serviceName} criado com sucesso`);
+         window.location.pathname = "/admin/servicesList"
+      } catch (error) {
+         window.alert(
+            "erro ao criar novo produto: Verfifique se já não existe um produto com o mesmo nome"
+      );
+      }
+      
    }
 
    const handleBack = ()=>{
@@ -36,7 +57,7 @@ export default function CreateService() {
                 <Input type="time" placeholder="Duração" name="Duração" setFieldValue={setDuration}/>
              </div>
              <div className={styles.buttonContainer}>
-                <Button page="/admin/createAvailability" handleClick={handleCreate} >Criar</Button>
+                <Button page="/admin/createService" handleClick={handleCreate} >Criar</Button>
                 <Button page="login" handleClick={handleBack} >Voltar</Button>
              </div>
               

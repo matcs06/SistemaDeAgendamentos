@@ -5,16 +5,26 @@ import Link from "next/link";
 import Input from "../../../components/input"
 import Button from "../../../components/Button"
 import { useState } from "react";
+import api from "../../../api";
 
 export default function Login(){
    
-   const [email, setEmail] = useState("");
+   const [user, setUser] = useState("");
    const [password, setPassword] = useState("");
    
-   console.log(email, password);
+   const handleClick = async () =>{
+      try {
+         const response = await api.post("/sessions/", {
+         username: user,
+         password: password,
+         });
 
-   const handleClick = () =>{
-      console.log("Abriu funnção")
+         localStorage.setItem("token", response.data.token);
+
+         window.location.pathname = ("/admin/servicesList")
+      } catch (error) {
+         window.alert("Erro ao realiza login, Tente novamente!!!");
+      }
    }
 
    return(
@@ -34,9 +44,9 @@ export default function Login(){
        <div className={styles.cardContainer}>
           <div className={styles.loginCard}>
           <h1>Fazer Login</h1>
-          <Input type="text" placeholder="Email" name="email" setFieldValue={setEmail} />
+          <Input type="text" placeholder="Usuário" name="user" setFieldValue={setUser} />
           <Input type="password" placeholder="Senha" name="password" setFieldValue={setPassword}/>
-          <Button page="https://www.google.com/" handleClick={handleClick} >Entrar</Button>
+          <Button page="/admin/login" handleClick={handleClick} >Entrar</Button>
           <div className={styles.spamContainer}>
              <Link href="signin">
                  <span>Ainda não tenho uma conta</span>

@@ -10,6 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from  "react-datepicker";
 import {validateMorningTime, validateAfternoonTime} from "./utils.js"
 import pt from "date-fns/locale/pt-BR"
+import api from "../../../api";
 
 
 
@@ -36,7 +37,7 @@ export default function CreateAvailability() {
       setPickedDate(date)
 
       var month = date.getUTCMonth() + 1; //months from 1-12
-      var day = date.getUTCDate() - 1;
+      var day = date.getUTCDate();
       var year = date.getUTCFullYear();
 
       day = addZero(day)
@@ -47,10 +48,55 @@ export default function CreateAvailability() {
 
    }
 
-   const handleCreate = ()=>{
-      validateMorningTime(morningFrom, morningTo);
-      validateAfternoonTime(afternoonFrom, afternoonTo)
-      console.log(morningFrom, morningTo)
+   const handleCreate = async ()=>{
+      
+      try {
+
+         validateMorningTime(morningFrom, morningTo);
+         validateAfternoonTime(afternoonFrom, afternoonTo)
+         
+         const token = localStorage.getItem("token");
+
+         var morning_start_time = ""
+         var morning_end_time = ""
+         var afternoon_start_time = ""
+         var afternoon_end_time = ""
+
+         if (morningFrom){
+            morning_start_time = morningFrom + ":00"
+         }
+
+         if (morningTo){
+            morning_end_time = morningTo + ":00"
+         }
+
+         if (afternoonFrom){
+            afternoon_start_time = afternoonFrom + ":00"
+         }
+
+         if (afternoonTo){
+            afternoon_end_time = afternoonTo + ":00"
+         }
+
+         await api.post("/availability/", {
+            date: formatedDate,
+            morning_start_time,
+            morning_end_time,
+            afternoon_start_time,
+            afternoon_end_time
+            }, {
+               headers: {
+               Authorization: "Bearer " + token,
+            },
+         });
+         window.alert(`Horário na data ${formatedDate} criado com sucesso`);
+         window.location.pathname = "/admin/availabilityInquiry"
+      } catch (error) {
+         window.alert(
+            "erro ao criar novo horário: Verfifique se já não existe um horário na mesma data"
+      );
+      }
+
    }
 
    const handleBack = ()=>{

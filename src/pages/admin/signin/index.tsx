@@ -5,18 +5,30 @@ import Button from "../../../components/Button"
 
 import styles from "./signin.module.scss"
 import { useState } from 'react';
+import api from '../../../api'
 
 export default function SignIn(){
-   const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [name, setName] = useState("");
+   const [username, setUsername] = useState("");
    const [key, setKey] = useState("");
    
+   const handleClick = async () =>{
    
+      try {
+         await api.post("/users/", {
+         name: name,
+         username: username,
+         password: password,
+         key: key,
+      });
 
-   const handleClick = () =>{
-      console.log("Abriu funnção")
-      console.log(email, password, name, key)
+         window.alert("Usuário criado com sucesso");
+         window.location.pathname = ("/admin/login")
+      } catch (err) {
+         
+         window.alert(`Erro ao criar Usuário! Usuário já existe ou  chave incorreta`);
+      }
    }
 
    return(
@@ -37,10 +49,10 @@ export default function SignIn(){
           <div className={styles.loginCard}>
           <h1>Criar Usuário</h1>
           <Input type="text" placeholder="Nome" name="name" setFieldValue={setName}/>
-          <Input type="text" placeholder="Email" name="email" setFieldValue={setEmail}/>
+          <Input type="text" placeholder="Usuário" name="username" setFieldValue={setUsername}/>
           <Input type="password" placeholder="Senha" name="senha" setFieldValue={setPassword}/>
           <Input type="password" placeholder="Chave" name="key" setFieldValue={setKey}/>
-          <Button page="https://www.google.com/" handleClick={handleClick} >Criar Usuário</Button>
+          <Button page="/admin/signin" handleClick={handleClick} >Criar Usuário</Button>
           <Button page="login" handleClick={handleClick} >Voltar</Button>
           <div className={styles.space}></div>
        </div>

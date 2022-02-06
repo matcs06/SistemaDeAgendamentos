@@ -6,28 +6,28 @@ import FindInPageIcon from '@mui/icons-material/FindInPage';
 
 export const SideBarData = [
    {
-      title: "Serviços",
+      title: "Ver Serviços",
       icon: <DesignServicesIcon />,
       link: "admin/servicesList"
-   },
-    {
-      title: "Agendamentos",
-      icon: <EventIcon />,
-      link: "admin/openSchedules/"
    },
     {
       title: "Criar Serviço",
       icon: <AddBoxIcon />,
       link: "/admin/createService"
    },
+     {
+      title: "Ver Horário",
+      icon: <FindInPageIcon />,
+      link: "/admin/availabilityInquiry"
+   },
     {
       title: "Criar Horário",
       icon: <MoreTimeIcon />,
       link: "/admin/createAvailability"
    },
-     {
-      title: "Ver Horário",
-      icon: <FindInPageIcon />,
-      link: "/admin/availabilityInquiry"
-   }
+   {
+      title: "Agendamentos",
+      icon: <EventIcon />,
+      link: "admin/openSchedules/"
+   },
 ]

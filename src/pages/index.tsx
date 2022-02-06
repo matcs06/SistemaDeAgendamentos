@@ -5,7 +5,7 @@ import Login from "./admin/login"
 export default function Home() {
   return (
     <>
-     <Login/>
+     <h1>Antonielem site is working</h1>
   </>
   )
 }
