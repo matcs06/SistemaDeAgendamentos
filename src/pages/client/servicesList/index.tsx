@@ -1,186 +1,65 @@
 import styles from "./servicesList.module.scss"
 import Router from 'next/router'
+import { useEffect, useState } from "react"
+import api from "../../../api";
+
+interface ServiceFields {
+   id:string;
+   name:string;
+   description:string;
+   price:string;
+   duration:string;
+}
 
 export default function ServicesList(){
 
-    const test = "Design natural"
+   const [items, setItems] = useState<ServiceFields[]>([]);
 
-   const handleClick = (serviceName) =>{
+   const handleClick = (serviceId: string, serviceName: string, serviceDuration:string,
+   ) =>{
+
       Router.push({
          pathname: '/client/chooseTime',
-         query: { serviceName: serviceName }
+         query: { serviceName, serviceId, serviceDuration}
      })
    }
+
+
+   useEffect(()=>{
+      async function loadItems() {
+         const response = await api.get<ServiceFields[]>("/products");
+
+         setItems(response.data);
+      }
+      loadItems();
+      return () => {
+         setItems([]);
+      };
+   }, [])
 
    return(
       <div className={styles.container}>
         <h3 className={styles.screenTitle}>Escolha um serviço</h3>
          <div className={styles.panel}>
-            
-            <div className={styles.card} onClick={()=>handleClick(test)}>
+            {items && items.map((item)=>(
+                 <div className={styles.card} onClick={()=>handleClick(item.id, item.name, item.duration)} key={item.id}>
                <div className={styles.topCardContainer}>
-                   <h1>Design Natural</h1>
+                   <h1>{item.name}</h1>
                </div>
               
                <ul>
-                  <li>
-                     Higienização
-                  </li>
-                  <li>
-                     Esfoliação
-                  </li>
-                  <li>
-                     Mapeamento
-                  </li>
-                  <li>
-                     Corte e pinçamento
-                  </li>
-                  <li>
-                     Aplicação com gilete
-                  </li>
+                 {item.description.split(",").map((descLine)=>(
+                     <li key={descLine}>
+                        {descLine}
+                     </li>
+                  ))}
                </ul>
                <div className={styles.cardBottom}>
-                  <h3>Duração: 3hrs</h3>
-                  <h3>15 R$</h3>
+                  <h3>Duração: {item.duration} hrs</h3>
+                  <h3>{item.price} R$</h3>
                </div>
             </div>
-            <div className={styles.card} onClick={()=>handleClick(test)}>
-               <div className={styles.topCardContainer}>
-                   <h1>Design Natural</h1>
-               </div>
-              
-               <ul>
-                  <li>
-                     Higienização
-                  </li>
-                  <li>
-                     Esfoliação
-                  </li>
-                  <li>
-                     Mapeamento
-                  </li>
-                  <li>
-                     Corte e pinçamento
-                  </li>
-                  <li>
-                     Aplicação com gilete
-                  </li>
-               </ul>
-               <div className={styles.cardBottom}>
-                  <h3>Duração: 3hrs</h3>
-                  <h3>15 R$</h3>
-               </div>
-            </div>
-            <div className={styles.card} onClick={()=>handleClick(test)}>
-               <div className={styles.topCardContainer}>
-                   <h1>Design Natural</h1>
-               </div>
-              
-               <ul>
-                  <li>
-                     Higienização
-                  </li>
-                  <li>
-                     Esfoliação
-                  </li>
-                  <li>
-                     Mapeamento
-                  </li>
-                  <li>
-                     Corte e pinçamento
-                  </li>
-                  <li>
-                     Aplicação com gilete
-                  </li>
-               </ul>
-               <div className={styles.cardBottom}>
-                  <h3>Duração: 3hrs</h3>
-                  <h3>15 R$</h3>
-               </div>
-            </div>
-            <div className={styles.card} onClick={()=>handleClick(test)}>
-               <div className={styles.topCardContainer}>
-                   <h1>Design Natural</h1>
-               </div>
-              
-               <ul>
-                  <li>
-                     Higienização
-                  </li>
-                  <li>
-                     Esfoliação
-                  </li>
-                  <li>
-                     Mapeamento
-                  </li>
-                  <li>
-                     Corte e pinçamento
-                  </li>
-                  <li>
-                     Aplicação com gilete
-                  </li>
-               </ul>
-               <div className={styles.cardBottom}>
-                  <h3>Duração: 3hrs</h3>
-                  <h3>15 R$</h3>
-               </div>
-            </div>
-            <div className={styles.card} onClick={()=>handleClick(test)}>
-               <div className={styles.topCardContainer}>
-                   <h1>Design Natural</h1>
-               </div>
-              
-               <ul>
-                  <li>
-                     Higienização
-                  </li>
-                  <li>
-                     Esfoliação
-                  </li>
-                  <li>
-                     Mapeamento
-                  </li>
-                  <li>
-                     Corte e pinçamento
-                  </li>
-                  <li>
-                     Aplicação com gilete
-                  </li>
-               </ul>
-               <div className={styles.cardBottom}>
-                  <h3>Duração: 3hrs</h3>
-                  <h3>15 R$</h3>
-               </div>
-            </div>
-            <div className={styles.card} onClick={()=>handleClick(test)}>
-               <div className={styles.topCardContainer}>
-                   <h1>Design Natural</h1>
-               </div>
-              
-               <ul>
-                  <li>
-                     Higienização
-                  </li>
-                  <li>
-                     Esfoliação
-                  </li>
-                  <li>
-                     Mapeamento
-                  </li>
-                  <li>
-                     Corte e pinçamento
-                  </li>
-                  <li>
-                     Aplicação com gilete
-                  </li>
-               </ul>
-               <div className={styles.cardBottom}>
-                  <h3>Duração: 3hrs</h3>
-                  <h3>15 R$</h3>
-               </div>
-            </div>
-           
-
+            ))}
          </div>
          
       </div>

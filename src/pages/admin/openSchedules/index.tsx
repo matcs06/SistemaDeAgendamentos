@@ -52,6 +52,23 @@ export default function OpenSchedules(){
      }
    }
 
+   const onWhatsAppClick = (phone: string, serviceName:string, serviceDate:string, serviceTime:string)=>{
+
+      phone = "+55"+phone
+      const newTime = serviceTime.split(":")
+
+      const formatedTime = newTime[0] + ":" + newTime[1]      
+
+      let messageContent = `Studio Antonielem Ramos:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nconfirma?
+      `
+
+      messageContent = window.encodeURIComponent(messageContent);
+
+      let apiURL = `https://api.whatsapp.com/send?phone=${phone}&text=${messageContent}`;
+      
+      window.open(apiURL);
+   }
+
    return(
       <div className={styles.container}>
          <SideBar/>         
@@ -64,7 +81,7 @@ export default function OpenSchedules(){
                   <p>Data: {item.date} - {getWeekDayName(item.date)}</p>
                   <div className={styles.numberContainer}>
                      <p>Número: {item.phone_number}</p>
-                     <div className={styles.wppIcon} onClick={()=>{window.alert("clicou")}}>
+                     <div className={styles.wppIcon} onClick={()=>{onWhatsAppClick(item.phone_number, item.service, item.date, item.start_time)}}>
                         <WhatsAppIcon/>   
                      </div>
                      

@@ -33,18 +33,20 @@
         margin-right: 6px;
         height: 85px;
         width: 35%;
-        min-width: 117px;
+        min-width: 120px;
         background-color: #3C2841;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         border-radius: 3px;
         font-family: "Roboto";
+        font-size: 17px;
         cursor: pointer;
         transition: background-color 0.2s ;
 
         &:hover{
-            background-color: rgba($color: #3C2841, $alpha: 0.6);
+            background-color: rgba($color: #1a121b, $alpha: 0.6);
         }
     }
 }
@@ -63,8 +65,8 @@
 }
 
 .pickTimeTitle{
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
 .times{
@@ -91,7 +93,7 @@
         transition: background-color 0.2s ;
 
         &:hover{
-            background-color: rgba($color: #3C2841, $alpha: 0.6);
+            background-color: rgba($color: #1a121b, $alpha: 0.6);
         }
     }
 }
