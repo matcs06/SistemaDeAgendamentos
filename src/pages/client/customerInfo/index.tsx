@@ -28,7 +28,7 @@ function CustomerInfo(props:any){
 
             Router.push({
                 pathname: '/client/finalScreen',
-                query:{valor:props.router.query.servicePrice, serviceName, serviceTime: choosedTime }
+                query:{valor:props.router.query.servicePrice, serviceName, serviceTime: choosedTime, customerName }
             })
 
         } catch (error) {
