@@ -20,19 +20,6 @@ function ChooseTime(props: any){
     const [timesAvailable, setTimesAvailable] = useState<availabilityDetails>()
     const [choosedDate, setChoosedDate] = useState("")
     const [choosedTime, setChoosedTime] = useState("")
-    const [isMorning, setIsMorning] = useState(true)
-
-    const handleClick = ()=>{
-        
-        const serviceDuration = props.router.query.serviceDuration;
-        const serviceName = props.router.query.serviceName;
-        const servicePrice = props.router.query.servicePrice
-        
-        Router.push({
-            pathname: '/client/customerInfo',
-            query: { serviceName, serviceDuration, servicePrice, choosedDate, choosedTime, isMorning }
-        })      
-    }
 
     const onClickDay = async(id:string, dateChoosed)=>{
         
@@ -49,12 +36,25 @@ function ChooseTime(props: any){
 
     }
 
-    const onClickTime = async(time: string, isMorning:boolean)=>{
+    const onClickTime = async(time: string, )=>{
+
+        setChoosedTime(time)
+
         if(time==="X"){
             window.alert("Este horário está indisponível para agendamento")
         }
-        setChoosedTime(time)
-        setIsMorning(isMorning)
+    }
+
+    const handleClick = ()=>{
+        
+        const serviceDuration = props.router.query.serviceDuration;
+        const serviceName = props.router.query.serviceName;
+        const servicePrice = props.router.query.servicePrice
+        
+        Router.push({
+            pathname: '/client/customerInfo',
+            query: { serviceName, serviceDuration, servicePrice, choosedDate, choosedTime }
+        })      
     }
 
     useEffect(()=>{
@@ -92,13 +92,13 @@ function ChooseTime(props: any){
                 <h2>Manhã</h2>
                 <div className={styles.times}>
                     {timesAvailable?.morning_available_times && timesAvailable.morning_available_times.map((time)=>(
-                        <div onClick={()=>{onClickTime(timeFormated(time), true)}} key={time} className={styles.time}>{timeFormated(time)}</div>
+                        <div onClick={()=>{onClickTime(time)}} key={time} className={styles.time}>{timeFormated(time)}</div>
                     ))}
                 </div>
                 <h2>Tarde</h2>
                 <div className={styles.times}>
                     {timesAvailable?.afternoon_available_times && timesAvailable.afternoon_available_times.map((time)=>(
-                        <div onClick={()=>{onClickTime(time, false)}} key={time} className={styles.time}>{timeFormated(time)}</div>
+                        <div onClick={()=>{onClickTime(time)}} key={time} className={styles.time}>{timeFormated(time)}</div>
                     ))}
                 </div>
             </div>

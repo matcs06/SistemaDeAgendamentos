@@ -10,18 +10,34 @@ function CustomerInfo(props:any){
     const [customerNumber, setCustomerNumber] = useState("")
 
     const handleClick = async()=>{
+
         const serviceDuration = props.router.query.serviceDuration;
         const choosedDate = props.router.query.choosedDate;
         const choosedTime = props.router.query.choosedTime;
-        const isMorning = props.router.query.isMorning;
         const serviceName = props.router.query.serviceName;
+        let newServiceDuration;
+        let newChoosedTime;
+        if(serviceDuration.split(":").length != 3){
+            newServiceDuration = serviceDuration + ":00"
+        }else{
+            newServiceDuration = serviceDuration
+        }
+
+        if(choosedTime.split(":").length != 3){
+            newChoosedTime = choosedTime + ":00"
+        }else{
+            newChoosedTime = choosedTime
+        }
+
+        let isMorning = newChoosedTime < '12:00:00' ? true : false
+
         try {
             await api.post('schedules',{
                 customer_name: customerName,
                 service: serviceName,
                 date: choosedDate,
-                start_time: choosedTime,
-                service_duration: serviceDuration,
+                start_time: newChoosedTime,
+                service_duration: newServiceDuration,
                 phone_number: customerNumber,
                 isMorning: Boolean(isMorning)
             })
@@ -32,7 +48,7 @@ function CustomerInfo(props:any){
             })
 
         } catch (error) {
-            window.alert("Erro ao criar agendamento, tente novamente ou veja se já não tem um agendamento feito para esse horário!")
+            window.alert("Erro ao criar agendamento, tente novamente e confirme se já não existe um agendamento feito para esse horário!")
             
         }
       
