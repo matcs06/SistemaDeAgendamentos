@@ -59,8 +59,7 @@ export default function OpenSchedules(){
 
       const formatedTime = newTime[0] + ":" + newTime[1]      
 
-      let messageContent = `Studio Antonielem Ramos:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nconfirma?
-      `
+      let messageContent = `Studio Antonielem Ramos:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nconfirma?`
 
       messageContent = window.encodeURIComponent(messageContent);
 

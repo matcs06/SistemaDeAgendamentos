@@ -3,6 +3,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { fontSize } from "@mui/system";
 import Button from '../../../components/Button';
 import styles from "./finalScreen.module.scss"
+import { timeFormated } from '../chooseTime/utils';
 
 function FinalScreen(props:any){
 
@@ -17,7 +18,7 @@ function FinalScreen(props:any){
             <h2 className={styles.congrats}>Parabéns!!!</h2>
             <CheckIcon sx={{fontSize:100}}/>
             <div className={styles.text}>
-                <h2>Seu agendamento do serviço <strong>{props.router.query.serviceName}</strong>  às <strong>{props.router.query.serviceTime} horas</strong> foi realizado com sucesso.</h2>
+                <h2>Seu agendamento do serviço <strong>{props.router.query.serviceName}</strong>  às <strong>{timeFormated(props.router.query.serviceTime)} horas</strong> foi realizado com sucesso.</h2>
             </div>
 
             <div className={styles.text}>

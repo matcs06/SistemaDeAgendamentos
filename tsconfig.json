@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/pages/client/chooseTime/utils.js"  ],
   "exclude": [
     "node_modules"
   ]

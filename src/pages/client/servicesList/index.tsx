@@ -15,12 +15,12 @@ export default function ServicesList(){
 
    const [items, setItems] = useState<ServiceFields[]>([]);
 
-   const handleClick = (serviceId: string, serviceName: string, serviceDuration:string,
+   const handleClick = (serviceId: string, serviceName: string, serviceDuration:string, servicePrice:string
    ) =>{
 
       Router.push({
          pathname: '/client/chooseTime',
-         query: { serviceName, serviceId, serviceDuration}
+         query: { serviceName, serviceId, serviceDuration, servicePrice}
      })
    }
 
@@ -42,7 +42,7 @@ export default function ServicesList(){
         <h3 className={styles.screenTitle}>Escolha um serviço</h3>
          <div className={styles.panel}>
             {items && items.map((item)=>(
-                 <div className={styles.card} onClick={()=>handleClick(item.id, item.name, item.duration)} key={item.id}>
+                 <div className={styles.card} onClick={()=>handleClick(item.id, item.name, item.duration, item.price)} key={item.id}>
                <div className={styles.topCardContainer}>
                    <h1>{item.name}</h1>
                </div>

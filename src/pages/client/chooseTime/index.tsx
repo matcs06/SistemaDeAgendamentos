@@ -18,26 +18,43 @@ function ChooseTime(props: any){
 
     const [daysAvailable, setDaysAvailable] = useState<AvailabilityFields[]>([])
     const [timesAvailable, setTimesAvailable] = useState<availabilityDetails>()
+    const [choosedDate, setChoosedDate] = useState("")
+    const [choosedTime, setChoosedTime] = useState("")
+    const [isMorning, setIsMorning] = useState(true)
 
-    const handleClick = (serviceName:string, price:string)=>{
+    const handleClick = ()=>{
+        
+        const serviceDuration = props.router.query.serviceDuration;
+        const serviceName = props.router.query.serviceName;
+        const servicePrice = props.router.query.servicePrice
+        
         Router.push({
             pathname: '/client/customerInfo',
-            query: { serviceName, price }
+            query: { serviceName, serviceDuration, servicePrice, choosedDate, choosedTime, isMorning }
         })      
     }
 
-    const onClickDay = async(id:string)=>{
-    
+    const onClickDay = async(id:string, dateChoosed)=>{
+        
+        setChoosedDate(dateChoosed)
+
         try {
             const response = await api.get<availabilityDetails>(`/availability/details/${id}`,{    
             params:{service_duration: props.router.query.serviceDuration+ ":00"}                          
             })
             setTimesAvailable(response.data)
         } catch (error) {
-            console.log(error)
+            window.alert("Erro ao ler horários pra esse dia")
         }
-        
-        
+
+    }
+
+    const onClickTime = async(time: string, isMorning:boolean)=>{
+        if(time==="X"){
+            window.alert("Este horário está indisponível para agendamento")
+        }
+        setChoosedTime(time)
+        setIsMorning(isMorning)
     }
 
     useEffect(()=>{
@@ -61,7 +78,7 @@ function ChooseTime(props: any){
             <div className={styles.weekDays}>
                 {daysAvailable && daysAvailable.map((day)=>(
                 <>
-                    <div key={day.id} className={styles.weekDay} onClick={()=>{onClickDay(day.id)}}>
+                    <div key={day.id} className={styles.weekDay} onClick={()=>{onClickDay(day.id, day.date)}}>
                         <p>{isTodayOrTomorrow(day.date)}</p> 
                         <p>{getWeekDayName(day.date)} feira</p>
                     </div>
@@ -75,18 +92,18 @@ function ChooseTime(props: any){
                 <h2>Manhã</h2>
                 <div className={styles.times}>
                     {timesAvailable?.morning_available_times && timesAvailable.morning_available_times.map((time)=>(
-                        <div key={time} className={styles.time}>{timeFormated(time)}</div>
+                        <div onClick={()=>{onClickTime(timeFormated(time), true)}} key={time} className={styles.time}>{timeFormated(time)}</div>
                     ))}
                 </div>
                 <h2>Tarde</h2>
                 <div className={styles.times}>
                     {timesAvailable?.afternoon_available_times && timesAvailable.afternoon_available_times.map((time)=>(
-                        <div key={time} className={styles.time}>{timeFormated(time)}</div>
+                        <div onClick={()=>{onClickTime(time, false)}} key={time} className={styles.time}>{timeFormated(time)}</div>
                     ))}
                 </div>
             </div>
 
-            <div className={styles.buttonContainer} onClick={()=>handleClick("Design Natural", "15R$")}>
+            <div className={styles.buttonContainer} onClick={handleClick}>
                 <button>Continuar</button>
             </div>
         </div>
