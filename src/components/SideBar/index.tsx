@@ -40,8 +40,6 @@ const SideBar: React.FC = () => {
 
   }
 
-  console.log(sideBarContiner)
-
   return(
      <>
      <div className={styles.toogle} onClick={handleTogleClick}>
