@@ -2,7 +2,7 @@ import styles from "./chooseTime.module.scss"
 import Router, {withRouter } from 'next/router'
 import { useEffect, useState } from "react"
 import api from "../../../api"
-import {getWeekDayName, isTodayOrTomorrow, timeFormated} from "./utils.js"
+import {getWeekDayName, isTodayOrTomorrow, timeFormated} from "../../../utils/index.js"
 interface AvailabilityFields{
     id:string;
     date: string;

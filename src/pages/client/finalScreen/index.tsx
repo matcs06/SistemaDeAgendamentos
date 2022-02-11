@@ -3,7 +3,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { fontSize } from "@mui/system";
 import Button from '../../../components/Button';
 import styles from "./finalScreen.module.scss"
-import { timeFormated } from '../chooseTime/utils';
+import { timeFormated } from "../../../utils/index.js";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function FinalScreen(props:any){

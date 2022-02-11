@@ -5,7 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { fontSize } from "@mui/system";
 import { useEffect, useState } from "react";
 import api from "../../../api";
-import { getWeekDayName, timeFormated } from "./utils";
+import { getWeekDayName, timeFormated } from "../../../utils/index.js";
 
 interface SchduleFields{
    id:string;

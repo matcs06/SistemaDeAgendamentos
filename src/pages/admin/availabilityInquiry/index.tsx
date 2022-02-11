@@ -3,7 +3,7 @@ import styles from "./availabilityInquiry.module.scss"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { fontSize } from "@mui/system";
 import { useEffect, useState } from "react";
-import {getMonthName,getWeekDayName,getYear, getDayInNumber, timeFormated} from "./utils"
+import {getMonthName,getWeekDayName,getYear, getDayInNumber, timeFormated} from "../../../utils/index.js"
 import api from "../../../api";
 
 interface AvailabilityFiels{

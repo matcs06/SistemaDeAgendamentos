@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 import { registerLocale } from  "react-datepicker";
-import {validateMorningTime, validateAfternoonTime} from "./utils.js"
+import {validateMorningTime, validateAfternoonTime} from "../../../utils/index.js"
 import pt from "date-fns/locale/pt-BR"
 import api from "../../../api";
 
