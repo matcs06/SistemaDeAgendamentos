@@ -17,7 +17,7 @@ export default function CreateService() {
       const token = localStorage.getItem("token");
       
       try {
-         await api.post("/products", {
+         await api.post("https://agendaapi.arangal.com/products", {
             name: serviceName,
             description: serviceInfo,
             price: value,

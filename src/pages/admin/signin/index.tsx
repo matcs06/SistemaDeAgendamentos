@@ -16,16 +16,17 @@ export default function SignIn(){
    const handleClick = async () =>{
    
       try {
-         await api.post("/users/", {
+         await api.post("https://agendaapi.arangal.com/users/", {
          name: name,
          username: username,
          password: password,
          key: key,
-      });
+      },);
 
          window.alert("Usuário criado com sucesso");
          window.location.pathname = ("/admin/login")
       } catch (err) {
+         console.log(err)
          
          window.alert(`Erro ao criar Usuário! Usuário já existe ou  chave incorreta`);
       }

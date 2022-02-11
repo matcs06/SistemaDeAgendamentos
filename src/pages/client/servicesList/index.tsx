@@ -27,7 +27,7 @@ export default function ServicesList(){
 
    useEffect(()=>{
       async function loadItems() {
-         const response = await api.get<ServiceFields[]>("/products");
+         const response = await api.get<ServiceFields[]>("https://agendaapi.arangal.com/products");
 
          setItems(response.data);
       }

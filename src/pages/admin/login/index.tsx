@@ -14,7 +14,7 @@ export default function Login(){
    
    const handleClick = async () =>{
       try {
-         const response = await api.post("/sessions/", {
+         const response = await api.post("https://agendaapi.arangal.com/sessions/", {
          username: user,
          password: password,
          });
@@ -23,6 +23,7 @@ export default function Login(){
 
          window.location.pathname = ("/admin/servicesList")
       } catch (error) {
+         console.log(error)
          window.alert("Erro ao realiza login, Tente novamente!!!");
       }
    }

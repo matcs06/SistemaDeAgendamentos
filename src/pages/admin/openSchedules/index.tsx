@@ -26,7 +26,7 @@ export default function OpenSchedules(){
 
    useEffect(()=>{
       async function loadItems(){
-         const response = await api.get<SchduleFields[]>("schedules/")
+         const response = await api.get<SchduleFields[]>("https://agendaapi.arangal.com/schedules/")
 
          setItems(response.data)
          setUpdateOnDelete(false)

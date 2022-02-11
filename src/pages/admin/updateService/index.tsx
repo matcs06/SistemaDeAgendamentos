@@ -46,7 +46,7 @@ function UpdateService(props: any) {
 
       try {
          await api.patch(
-         `/products/${props.router.query.serviceId}`,
+         `https://agendaapi.arangal.com/products/${props.router.query.serviceId}`,
          {
             name: existentServiceName,
             description: serviceInfo,
