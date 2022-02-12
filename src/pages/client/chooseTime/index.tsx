@@ -41,7 +41,7 @@ function ChooseTime(props: any){
         setChoosedTime(time)
 
         if(time==="X"){
-            window.alert("Este horário está indisponível para agendamento")
+            window.alert("Este horário não está disponível para agendamento")
         }
     }
 
@@ -92,7 +92,7 @@ function ChooseTime(props: any){
                 <h2>Manhã</h2>
                 <div className={styles.times}>
                     {timesAvailable?.morning_available_times && timesAvailable.morning_available_times.map((time)=>(
-                        <div onClick={()=>{onClickTime(time)}} key={time} className={styles.time}>{timeFormated(time)}</div>
+                        <div onClick={()=>{onClickTime(timeFormated(time))}} key={time} className={styles.time}>{timeFormated(time)}</div>
                     ))}
                 </div>
                 <h2>Tarde</h2>

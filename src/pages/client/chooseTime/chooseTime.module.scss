@@ -46,7 +46,7 @@
         transition: background-color 0.2s ;
 
         &:hover{
-            background-color: rgba($color: #1a121b, $alpha: 0.6);
+            background-color: rgba($color: #08a850, $alpha: 0.6);
         }
     }
 }
@@ -91,10 +91,11 @@
         cursor: pointer;
 
         transition: background-color 0.2s ;
-
+        
+ 
         &:hover{
-            background-color: rgba($color: #1a121b, $alpha: 0.6);
-        }
+            background-color: rgba($color: #08a850, $alpha: 0.6);
+        }  
     }
 }
 
