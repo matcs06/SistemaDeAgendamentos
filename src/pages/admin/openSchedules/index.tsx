@@ -22,9 +22,11 @@ export default function OpenSchedules(){
 
    const [items, setItems] = useState<SchduleFields[]>([]);
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
-
+   const [updateOnClick, setupdateOnClick] = useState(false)
+ 
 
    useEffect(()=>{
+
       async function loadItems(){
          const response = await api.get<SchduleFields[]>("/schedules")
 
@@ -35,10 +37,11 @@ export default function OpenSchedules(){
       loadItems();
 
       return()=>{
+
          setItems([]);
       }
 
-   },[updateOnDelete])
+   },[updateOnDelete, updateOnClick])
 
    const deleteSchedules = async (productId: string) => {
      try {
@@ -71,7 +74,7 @@ export default function OpenSchedules(){
    return(
       <div className={styles.container}>
          <SideBar/>         
-         <div className={styles.panel}>
+         <div className={styles.panel} onClick={()=>{setupdateOnClick(!updateOnClick)}}>
             {items.map((item)=>(
                <div className={styles.card} key={item.id}>
                <div>
