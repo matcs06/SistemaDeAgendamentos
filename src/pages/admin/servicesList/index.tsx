@@ -31,7 +31,7 @@ export default function ServicesList(){
    useEffect(()=>{
       async function loadItems() {
          const token = localStorage.getItem("token");
-         const response = await api.get<ServiceFields[]>("https://agendaapi.arangal.com/products", {
+         const response = await api.get<ServiceFields[]>("/products", {
          headers: { Authorization: "Bearer " + token },
          });
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Input from "../../../components/input"
 import Button from "../../../components/Button"
 import { useState } from "react";
-import api from "../../../api";
+import instace from "../../../api";
 
 export default function Login(){
    
@@ -14,7 +14,7 @@ export default function Login(){
    
    const handleClick = async () =>{
       try {
-         const response = await api.post("https://agendaapi.arangal.com/sessions/", {
+         const response = await instace.post("/sessions/", {
          username: user,
          password: password,
          });

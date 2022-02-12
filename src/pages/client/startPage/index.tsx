@@ -7,7 +7,6 @@ export default function StartPage (){
         window.location.pathname = "/client/servicesList"
     }
 
-
     return (
         <div className={styles.pageContainer}>
             <div className={styles.imageContainer}>

@@ -22,7 +22,7 @@ export default function AvailabilityInquiry(){
 
    useEffect(()=>{
       async function loadItems(){
-         const response = await api.get<AvailabilityFiels[]>("https://agendaapi.arangal.com/availability/")
+         const response = await api.get<AvailabilityFiels[]>("/availability")
 
          setItems(response.data)
          setUpdateOnDelete(false)
@@ -39,7 +39,7 @@ export default function AvailabilityInquiry(){
    const deleteAvailability = async (productId: string) => {
     try {
       const token = localStorage.getItem("token");
-      await api.delete(`https://agendaapi.arangal.com/availability/${productId}`,{
+      await api.delete(`/availability/${productId}`,{
           headers: { Authorization: "Bearer " + token },
       })
       setUpdateOnDelete(true)

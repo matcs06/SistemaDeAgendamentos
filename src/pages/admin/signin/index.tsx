@@ -16,7 +16,7 @@ export default function SignIn(){
    const handleClick = async () =>{
    
       try {
-         await api.post("https://agendaapi.arangal.com/users/", {
+         await api.post("/users", {
          name: name,
          username: username,
          password: password,
@@ -54,7 +54,7 @@ export default function SignIn(){
           <Input type="password" placeholder="Senha" name="senha" setFieldValue={setPassword}/>
           <Input type="password" placeholder="Chave" name="key" setFieldValue={setKey}/>
           <Button page="/admin/signin" handleClick={handleClick} >Criar Usuário</Button>
-          <Button page="login" handleClick={handleClick} >Voltar</Button>
+          <Button page="login">Voltar</Button>
           <div className={styles.space}></div>
        </div>
        </div>

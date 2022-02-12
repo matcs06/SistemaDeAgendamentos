@@ -32,7 +32,7 @@ function CustomerInfo(props:any){
         let isMorning = newChoosedTime < '12:00:00' ? true : false
 
         try {
-            await api.post('https://agendaapi.arangal.com/schedules',{
+            await api.post('/schedules',{
                 customer_name: customerName,
                 service: serviceName,
                 date: choosedDate,

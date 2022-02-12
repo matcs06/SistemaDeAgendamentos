@@ -1,7 +1,7 @@
 import axios from "axios";
 
-let api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+let instace = axios.create({
+  baseURL: "https://agendaapi.arangal.com/",
 });
 
-export default api
+export default instace

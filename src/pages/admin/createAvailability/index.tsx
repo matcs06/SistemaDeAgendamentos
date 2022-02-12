@@ -78,7 +78,7 @@ export default function CreateAvailability() {
             afternoon_end_time = afternoonTo + ":00"
          }
 
-         await api.post("https://agendaapi.arangal.com/availability/", {
+         await api.post("/availability/", {
             date: formatedDate,
             morning_start_time,
             morning_end_time,

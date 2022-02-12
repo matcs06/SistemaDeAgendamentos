@@ -26,7 +26,7 @@ function ChooseTime(props: any){
         setChoosedDate(dateChoosed)
 
         try {
-            const response = await api.get<availabilityDetails>(`https://agendaapi.arangal.com/availability/details/${id}`,{    
+            const response = await api.get<availabilityDetails>(`/availability/details/${id}`,{    
             params:{service_duration: props.router.query.serviceDuration+ ":00"}                          
             })
             setTimesAvailable(response.data)
@@ -60,7 +60,7 @@ function ChooseTime(props: any){
     useEffect(()=>{
     
       async function loadItems() { 
-        const response = await api.get<AvailabilityFields[]>("https://agendaapi.arangal.com/availability");
+        const response = await api.get<AvailabilityFields[]>("/availability");
 
         setDaysAvailable(response.data);
       }
