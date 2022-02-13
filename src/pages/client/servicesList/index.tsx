@@ -55,7 +55,7 @@ export default function ServicesList(){
                   ))}
                </ul>
                <div className={styles.cardBottom}>
-                  <h3>Duração: {item.duration} hrs</h3>
+                  <h3>Duração: {item.duration} {item.duration.split(":")[0]==="00" ? "minutos" : "hr/s"}</h3>
                   <h3>{item.price} R$</h3>
                </div>
             </div>
