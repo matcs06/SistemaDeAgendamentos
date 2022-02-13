@@ -57,7 +57,8 @@ export default function OpenSchedules(){
 
    const onWhatsAppClick = (phone: string, serviceName:string, serviceDate:string, serviceTime:string)=>{
 
-      phone = "+55"+phone
+      
+      phone = "+55"+phone.replace(" ","")
       const newTime = serviceTime.split(":")
 
       const formatedTime = newTime[0] + ":" + newTime[1]      
