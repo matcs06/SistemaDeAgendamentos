@@ -80,7 +80,7 @@ function ChooseTime(props: any){
                 <>
                     <div key={day.id} className={styles.weekDay} onClick={()=>{onClickDay(day.id, day.date)}}>
                         <p>{isTodayOrTomorrow(day.date)}</p> 
-                        <p>{getWeekDayName(day.date)} feira</p>
+                        <p>{getWeekDayName(day.date)}</p>
                     </div>
                 </>
                 ))}  
