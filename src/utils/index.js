@@ -48,11 +48,11 @@ const getWeekDayName = (dateValue) =>{
 
    var days = new Array(7);
         days[0] = "Domingo";
-        days[1] = "Segunda";
-        days[2] = "Terça";
-        days[3] = "Quarta";
-        days[4] = "Quinta";
-        days[5] = "Sexta";
+        days[1] = "Segunda Feira";
+        days[2] = "Terça Feira";
+        days[3] = "Quarta Feira";
+        days[4] = "Quinta Feira";
+        days[5] = "Sexta Feira";
         days[6] = "Sábado";
 
    if(dateValue === ""){
