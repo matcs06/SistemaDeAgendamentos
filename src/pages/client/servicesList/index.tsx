@@ -2,6 +2,8 @@ import styles from "./servicesList.module.scss"
 import Router from 'next/router'
 import { useEffect, useState } from "react"
 import api from "../../../api";
+import { Skeleton } from '@mui/material';
+
 
 interface ServiceFields {
    id:string;
@@ -14,7 +16,8 @@ interface ServiceFields {
 export default function ServicesList(){
 
    const [items, setItems] = useState<ServiceFields[]>([]);
-
+   const [isLoading, setIsLoading]= useState(true)
+   const arrayLoop = [1,2,3,4,5,6]
    const handleClick = (serviceId: string, serviceName: string, serviceDuration:string, servicePrice:string
    ) =>{
 
@@ -30,14 +33,36 @@ export default function ServicesList(){
          const response = await api.get<ServiceFields[]>("/products");
 
          setItems(response.data);
+         setIsLoading(false)
+         
       }
       loadItems();
       return () => {
          setItems([]);
       };
-   }, [])
+   }, [isLoading])
 
-   return(
+   const loading = ()=>{
+      return(
+         <div className={styles.container}>
+         <Skeleton animation="wave" sx={{ bgcolor: '#3C2841' }}><h3 className={styles.screenTitle}>Escolha um serviço</h3> </Skeleton> 
+         <div className={styles.panel}>
+            {arrayLoop.map((cont)=>(
+                <Skeleton width={290} animation="wave" sx={{ bgcolor: '#3C2841' }} key={cont}>
+                <div className={styles.card} >
+                </div>
+            </Skeleton>
+            ))}
+         </div>
+         
+      </div>
+      )
+   }
+
+   if(isLoading){
+      return loading()
+   }else{
+      return(
       <div className={styles.container}>
         <h3 className={styles.screenTitle}>Escolha um serviço</h3>
          <div className={styles.panel}>
@@ -65,6 +90,6 @@ export default function ServicesList(){
       </div>
       
    )
-
+   }
 
 }
