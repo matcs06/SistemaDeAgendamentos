@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import api from "../../../api"
 import Input from "../../../components/input"
 import styles from "./customerInfo.module.scss"
+import PhoneInput from "../../../components/PhoneInput"
 
 function CustomerInfo(props:any){
 
@@ -15,8 +16,8 @@ function CustomerInfo(props:any){
         const choosedDate = props.router.query.choosedDate;
         const choosedTime = props.router.query.choosedTime;
         const serviceName = props.router.query.serviceName;
-        let newServiceDuration;
-        let newChoosedTime;
+        let newServiceDuration: string;
+        let newChoosedTime: string;
         if(serviceDuration.split(":").length != 3){
             newServiceDuration = serviceDuration + ":00"
         }else{
@@ -32,6 +33,15 @@ function CustomerInfo(props:any){
         let isMorning = newChoosedTime < '12:00:00' ? true : false
 
         try {
+
+            if(!customerName){
+                throw new Error("Informe o seu nome para finalizar o agendamento")
+            }
+
+            if(!customerNumber || customerNumber.length < 8){
+                throw new Error("Informe um número de telefone válido com o DD: EX: 98 991414243")
+            }
+
             await api.post('/schedules',{
                 customer_name: customerName,
                 service: serviceName,
@@ -48,8 +58,7 @@ function CustomerInfo(props:any){
             })
 
         } catch (error) {
-            window.alert("Erro ao criar agendamento, tente novamente e confirme se já não existe um agendamento feito para esse horário!")
-            
+            window.alert(error)
         }
       
     }
