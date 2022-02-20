@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import api from "../../../api"
 import Input from "../../../components/input"
 import styles from "./customerInfo.module.scss"
-import PhoneInput from "../../../components/PhoneInput"
 
 function CustomerInfo(props:any){
 
