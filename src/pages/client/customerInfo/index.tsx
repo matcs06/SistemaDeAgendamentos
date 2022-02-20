@@ -58,7 +58,11 @@ function CustomerInfo(props:any){
             })
 
         } catch (error) {
-            window.alert(error)
+            if(error.message.indexOf("Informe") > -1){
+                window.alert(error)
+            }else{
+                window.alert("Erro ao criar agendamento, tente novamente e confirme se já não existe um agendamento feito para esse horário!")
+            }
         }
       
     }
