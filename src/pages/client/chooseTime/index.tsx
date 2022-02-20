@@ -98,7 +98,7 @@ function ChooseTime(props: any){
                 <h2>Tarde</h2>
                 <div className={styles.times}>
                     {timesAvailable?.afternoon_available_times && timesAvailable.afternoon_available_times.map((time)=>(
-                        <div onClick={()=>{onClickTime(time)}} key={time} className={styles.time}>{timeFormated(time)}</div>
+                        <div onClick={()=>{onClickTime(timeFormated(time))}} key={time} className={styles.time}>{timeFormated(time)}</div>
                     ))}
                 </div>
             </div>
