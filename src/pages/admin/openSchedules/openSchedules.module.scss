@@ -24,10 +24,11 @@
   border-radius: 4px;
   padding: 15px 10px 10px 10px;
   margin: 10px 15px 10px 10px;
-  height: 220px;
+  height: 230px;
   transition: background 0.2s;
   font-family: "Roboto";
   font-size: 15px;
+  overflow-y: auto;
 
   &:hover {
     background: #231227;
