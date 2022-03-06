@@ -2,7 +2,6 @@ import SideBar from "../../../components/SideBar"
 import styles from "./openSchedules.module.scss"
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { fontSize } from "@mui/system";
 import { useEffect, useState } from "react";
 import api from "../../../api";
 import { getWeekDayName, timeFormated } from "../../../utils/index.js";
@@ -23,7 +22,7 @@ export default function OpenSchedules(){
    const [items, setItems] = useState<SchduleFields[]>([]);
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
    const [updateOnClick, setupdateOnClick] = useState(false)
- 
+   const [togleTransaction, setTogleTransaction] = useState(true)
 
    useEffect(()=>{
 
@@ -43,10 +42,36 @@ export default function OpenSchedules(){
 
    },[updateOnDelete, updateOnClick])
 
-   const deleteSchedules = async (productId: string) => {
+   const deleteSchedules = async (scheduleId: string,
+                                  serviceName:string,
+                                  serviceDate:string,
+                                  serviceValue:string) => {
+     
+     if(togleTransaction){
+        try {
+            const token = localStorage.getItem("token"); 
+
+            await api.post("/transactions", {
+               title: serviceName ,
+               value: serviceValue,
+               formatedDate: serviceDate,
+               }, {
+                  headers: {
+                  Authorization: "Bearer " + token,
+               },
+            });
+
+            window.alert("Agendamento adicionado ao IFinance com sucesso!")
+        } catch (error) {
+           window.alert("Erro ao adicionar agendamento no IFinance")
+           
+        }
+     }
+
      try {
+
        const token = localStorage.getItem("token");
-       await api.delete(`/schedules/${productId}`,{
+       await api.delete(`/schedules/${scheduleId}`,{
            headers: { Authorization: "Bearer " + token },
        })
        setUpdateOnDelete(true)
@@ -97,16 +122,18 @@ export default function OpenSchedules(){
                </div>
              
                <div className={styles.deleteContainerContainer}>
-                  <div className={styles.deleteContainer} onClick={()=>deleteSchedules(item.id)}>
+                  <div className={styles.togleContainer}>
+                     <p>IFin:</p>
+                     <input type="checkbox" checked={togleTransaction} onClick={()=>{setTogleTransaction(!togleTransaction)}}/>
+                  </div>
+                  <div className={styles.deleteContainer} onClick={()=>deleteSchedules(item.id, item.service, item.date, item.value)}>
                     <DeleteForeverIcon sx={{fontSize:30}}/>
                   </div>
                </div>               
             </div>
             ))}
             
-
          </div>
-         
       </div>
       
    )

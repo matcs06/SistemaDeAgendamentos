@@ -1,79 +1,90 @@
-
-.container{
-   display: flex;
-   background:var(--gray-backg);
-   height: 100vh;
-   padding: 0;
-   margin: 0;
+.container {
+  display: flex;
+  background: var(--gray-backg);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
-.panel{
-   display: grid;
-   width: 100%;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   grid-template-rows: auto auto 1fr 1fr 1fr auto auto;
-   grid-gap:10px;
-   background: var(--gray-backg);
-   overflow-y: auto; 
-   margin: 5% 5% 0 5% ;
-  
-
+.panel {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto auto 1fr 1fr 1fr auto auto;
+  grid-gap: 10px;
+  background: var(--gray-backg);
+  overflow-y: auto;
+  margin: 5% 5% 0 5%;
 }
 
-.card{
-   width: 25%;
-   min-width: 250px;
-   background: var(--lilac-button);
-   border-radius: 4px;
-   padding: 15px 10px 10px 10px;
-   margin: 10px 15px 10px 10px;
-   height: 220px;
-   transition: background 0.2s;
-  
-   &:hover{
-      background:#231227;
-   } 
+.card {
+  width: 25%;
+  min-width: 250px;
+  background: var(--lilac-button);
+  border-radius: 4px;
+  padding: 15px 10px 10px 10px;
+  margin: 10px 15px 10px 10px;
+  height: 220px;
+  transition: background 0.2s;
+  font-family: "Roboto";
+  font-size: 15px;
 
-   
-   
-   h1{
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-family: "Roboto";
-   }
-   
-   p{
-      margin: 8px;
-   }
+  &:hover {
+    background: #231227;
+  }
 
-   .cardBottom{
-     font-family: "Roboto";
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     margin-top: -10px;
-   }
+  h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: "Roboto";
+  }
+
+  p {
+    margin: 8px;
+  }
+
+  .cardBottom {
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -10px;
+  }
 }
 
-.numberContainer{
-   display: flex;
-   justify-content: space-between;
-   margin: -8px 0 -8px 0;
+.numberContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: -8px 0 -8px 0;
 }
 
-.wppIcon{
-   cursor: pointer;
+.wppIcon {
+  cursor: pointer;
 }
 
-.deleteContainerContainer{
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-   margin: 10px 15px 0 0;
+.deleteContainerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px 15px 0 0;
+  padding: 0 5px 0 0;
 }
-.deleteContainer{
-   display: flex;
-   width: 35px;
-   align-self: flex-end;
-   cursor: pointer;
+.deleteContainer {
+  display: flex;
+  width: 35px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.togleContainer {
+  font-family: "Roboto";
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  cursor: pointer;
+  input {
+    cursor: pointer;
+  }
 }

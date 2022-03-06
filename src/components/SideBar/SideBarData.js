@@ -3,6 +3,7 @@ import EventIcon from '@mui/icons-material/Event';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
+import PriceChangeIcon from '@mui/icons-material/PriceChange';
 
 export const SideBarData = [
    {
@@ -30,4 +31,9 @@ export const SideBarData = [
       icon: <EventIcon />,
       link: "admin/openSchedules/"
    },
+   {
+      title: "Ifinance",
+      icon: <PriceChangeIcon />,
+      link: "admin/finance/"
+   }
 ]
