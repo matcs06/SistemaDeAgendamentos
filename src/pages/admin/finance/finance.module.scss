@@ -257,6 +257,11 @@
       margin-left: 10%;
     }
 
+    .transactionTitle {
+      overflow-y: auto;
+      max-height: 45px;
+    }
+
     p {
       font-family: "Roboto";
       color: #746f6f;
