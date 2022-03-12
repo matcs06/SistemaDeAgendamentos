@@ -100,6 +100,10 @@ export default function OpenSchedules(){
    return(
       <div className={styles.container}>
          <SideBar/>         
+         <div className={styles.addToIfinance}>
+            <p>IF:</p>
+            <input type="checkbox" checked={togleTransaction} onClick={()=>{setTogleTransaction(!togleTransaction)}}/>
+         </div>
          <div className={styles.panel} onClick={()=>{setupdateOnClick(!updateOnClick)}}>
             {items.map((item)=>(
                <div className={styles.card} key={item.id}>
@@ -109,10 +113,6 @@ export default function OpenSchedules(){
                   <p>Data: {item.date} - {getWeekDayName(item.date)}</p>
                   <div className={styles.numberContainer}>
                      <p>Número: {item.phone_number}</p>
-                     <div className={styles.wppIcon} onClick={()=>{onWhatsAppClick(item.phone_number, item.service, item.date, item.start_time)}}>
-                        <WhatsAppIcon/>   
-                     </div>
-                     
                   </div>
                   <p>Horário: {timeFormated(item.start_time)}</p>
                   <div className={styles.cardBottom}>
@@ -121,11 +121,10 @@ export default function OpenSchedules(){
                   </div>
                </div>
              
-               <div className={styles.deleteContainerContainer}>
-                  <div className={styles.togleContainer}>
-                     <p>IFin:</p>
-                     <input type="checkbox" checked={togleTransaction} onClick={()=>{setTogleTransaction(!togleTransaction)}}/>
-                  </div>
+               <div className={styles.bottomContainer}>
+                  <div className={styles.wppIcon} onClick={()=>{onWhatsAppClick(item.phone_number, item.service, item.date, item.start_time)}}>
+                        <WhatsAppIcon/>   
+                  </div>  
                   <div className={styles.deleteContainer} onClick={()=>deleteSchedules(item.id, item.service, item.date, item.value)}>
                     <DeleteForeverIcon sx={{fontSize:30}}/>
                   </div>

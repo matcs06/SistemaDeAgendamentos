@@ -1,99 +1,102 @@
-.container{
-   display: flex;
-   background:var(--gray-backg);
-   height: 100vh;
-   padding: 0;
-   margin: 0;
+.container {
+  display: flex;
+  background: var(--gray-backg);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
-.panelContainer{
-   display: flex;
-   flex-direction: column;
-   align-self: center;
-   justify-self: center;
-   height: 80%;
-   width: 100%;
-   padding: 5px;
+.panelContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  height: 80%;
+  width: 100%;
+  padding: 5px;
 }
-.panel{
-   border-radius: 5px;
-   flex-direction: column;
-   display: flex;
-   align-self: center;
-   justify-self: center;
-   align-items: center;
-   width: 100%;
-   max-width: 500px;
-   max-height: 473px;
-   background: #231227;
-   overflow-x:hidden ;
-   height: 100%;
-   padding-top: 40px;
-
+@keyframes increaseSize {
+  from {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%, 100%);
+  }
 }
 
-.serviceName{
-   display: flex;
-   width: 85%;
-   align-items: center;
-   margin-top: 20px;
-
-   input{
-      border-radius: 2px;
-      font-family: "Roboto";
-      text-align: center;
-      font-size: 14px;
-   }
-
-}
-.serviceDescription{
-   display: flex;
-   width: 85%;
-   align-items: center;
-   margin-top: 20px;
-
-   input{
-      border-radius: 2px;
-      font-family: "Roboto";
-      text-align: center;
-      font-size: 14px;
-
-   }
-
-}
-.valueAndDuration{
-   display: flex;
-   width: 70%;
-   align-items: center;
-   margin-top: 20px;
-
-   input{
-      border-radius: 2px;
-      font-family: "Roboto";
-      text-align: center;
-      font-size: 14px;
-      
-   }
-
+.panel {
+  border-radius: 5px;
+  flex-direction: column;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  max-height: 473px;
+  background: #231227;
+  overflow-x: hidden;
+  height: 100%;
+  padding-top: 40px;
+  animation: increaseSize 0.6s;
 }
 
-.buttonContainer{
-   width: 90%;
-   margin-top: 50px;
+.serviceName {
+  display: flex;
+  width: 85%;
+  align-items: center;
+  margin-top: 20px;
+
+  input {
+    border-radius: 2px;
+    font-family: "Roboto";
+    text-align: center;
+    font-size: 14px;
+  }
+}
+.serviceDescription {
+  display: flex;
+  width: 85%;
+  align-items: center;
+  margin-top: 20px;
+
+  input {
+    border-radius: 2px;
+    font-family: "Roboto";
+    text-align: center;
+    font-size: 14px;
+  }
+}
+.valueAndDuration {
+  display: flex;
+  width: 70%;
+  align-items: center;
+  margin-top: 20px;
+
+  input {
+    border-radius: 2px;
+    font-family: "Roboto";
+    text-align: center;
+    font-size: 14px;
+  }
 }
 
-@media (max-width: 320px){
-   
-   .serviceName, .serviceDescription, .valueAndDuration{
-      input{
+.buttonContainer {
+  width: 90%;
+  margin-top: 50px;
+}
+
+@media (max-width: 320px) {
+  .serviceName,
+  .serviceDescription,
+  .valueAndDuration {
+    input {
       font-size: 12px;
-   }
-   }
+    }
+  }
 
-   .panel{
-      height: 90%;
-   }
-
-   
-
-
+  .panel {
+    height: 90%;
+  }
 }

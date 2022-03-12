@@ -4,6 +4,7 @@
   height: 100vh;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .panel {
@@ -16,6 +17,16 @@
   overflow-y: auto;
   margin: 5% 5% 0 5%;
 }
+@keyframes appearFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 .card {
   position: relative;
@@ -25,19 +36,24 @@
   border-radius: 4px;
   padding: 15px 10px 10px 10px;
   margin: 10px 15px 10px 10px;
-  height: 190px;
+  height: 220px;
   transition: background 0.2s;
   overflow-y: auto;
+  animation-name: appearFromLeft;
+  animation-duration: 0.6s;
 
   &:hover {
     background: #231227;
   }
 
   h1 {
-    font-size: 16px;
+    justify-self: center;
+    align-self: center;
+    font-size: 15px;
     margin-bottom: 10px;
     font-family: "Roboto";
     font-weight: lighter;
+    color: #dee0e4;
   }
   ul {
     max-height: 100px;
@@ -50,14 +66,19 @@
       margin: 0 0 0 10px;
       font-size: 15px;
       font-weight: lighter;
+      color: #d5d9de;
     }
   }
 
   .cardBottom {
+    position: absolute;
+    width: 90%;
     font-family: "Roboto";
     display: flex;
     align-items: center;
     justify-content: space-between;
+    bottom: 20px;
+    color: #d5d9de;
     h3 {
       font-size: 15px;
       font-weight: lighter;
@@ -66,15 +87,46 @@
 }
 .topCardContainer {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 
   cursor: pointer;
 
+  .deleteEdit {
+    display: flex;
+    margin-bottom: 3px;
+    justify-content: flex-end;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
   .deleteContainer {
     width: 30px;
+    border-radius: 3px;
+    color: rgb(184, 184, 184);
+    transition: color 0.2s;
+
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
   }
 
   .editContainer {
     width: 30px;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: rgb(184, 184, 184);
+    transition: color 0.2s;
+
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    margin-left: 10%;
   }
 }
