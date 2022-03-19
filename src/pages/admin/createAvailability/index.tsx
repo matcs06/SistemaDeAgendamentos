@@ -36,15 +36,14 @@ export default function CreateAvailability() {
    const handlePickedDate = (date) =>{
       setPickedDate(date)
 
-      var month = date.getUTCMonth() + 1; //months from 1-12
-      var day = date.getUTCDate();
-      var year = date.getUTCFullYear();
+      var month = date.getMonth() + 1; //months from 1-12
+      var day = date.getDate();
+      var year = date.getFullYear();
+      day = addZero(day);
+      month = addZero(month);
 
-      day = addZero(day)
-      month = addZero(month)
-
-      const formatedDate = day + "/" + month + "/" + year
-      setFormatedDate(formatedDate)
+      const formatedDate = day + "/" + month + "/" + year;
+      setFormatedDate(formatedDate);
 
    }
 
