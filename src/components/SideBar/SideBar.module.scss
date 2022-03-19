@@ -1,57 +1,52 @@
-.sidebarContainer{
-   padding-top: 35px;
-   display: flex;
-   justify-content: left;
-   flex-direction: column;
-   width: var(--sidebar-width);
-   background: #231227;
-   transition: width 0.2s;
+.sidebarContainer {
+  padding-top: 35px;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  background: #231227;
+  transition: width 0.2s;
 
+  ul {
+    margin-top: 40px;
+    li {
+      display: flex;
+      margin: 0px 10px 10px 10px;
+      color: #d5d9de;
+      font-family: "Roboto";
+      transition: font-size 0.2s;
+      transition: background 0.2s;
+      font-size: 15px;
 
-   ul{
-      margin-top: 40px;
-      li{
-         display: flex;
-         margin: 0px 10px 10px 10px;
-         color: #D5D9DE;
-         font-family: "Roboto";
-         transition: font-size 0.2s;
-         transition: background 0.2s;
-         font-size: 15px;
-
-
-         &:hover{
-            color:#231227;
-            font-size: 16px;
-            background: #D5D9DE;
-            border-radius: 2px;
-         }
+      &:hover {
+        color: #231227;
+        font-size: 16px;
+        background: #d5d9de;
+        border-radius: 2px;
       }
-   }   
-
+    }
+  }
 }
 
-.title{
-   align-self: center;
-   margin: 18px 5px 10px 5px;
-   font-family: "Rouge Script";
-   font-weight: 10;
-   font-size: 25px;
-   display: var(--display-header);
-   
+.title {
+  align-self: center;
+  margin: 18px 5px 10px 5px;
+  font-family: "Rouge Script";
+  font-weight: 10;
+  font-size: 25px;
+  display: var(--display-header);
 }
 
-.services{
-   cursor: pointer;
-   margin-top: 3px;
+.services {
+  cursor: pointer;
+  margin-top: 3px;
 }
 
-.icon{
-   margin-right: 10px;
+.icon {
+  margin-right: 10px;
 }
 
-.toogle{
-  
+.toogle {
   display: none;
   position: absolute;
   margin: 5px;
@@ -63,50 +58,47 @@
   align-items: center;
   color: var(--toogle-color);
   justify-content: center;
+  transition: transform 0.4s;
+  transform: rotate(var(--togleRotateDeg));
 
-  background:var(--lilac-button);
+  background: var(--lilac-button);
   cursor: pointer;
 }
 
-@media (max-width: 1366px){
-    .title{
-      font-size: 22px;
-   }
- 
-
+@media (max-width: 1366px) {
+  .title {
+    font-size: 22px;
+  }
 }
 
-@media (max-width: 1200px){
-    .title{
-      font-size: 20px;
-   }
-   .sidebarContainer{
-      font-size: 100%;
-   }
-
+@media (max-width: 1200px) {
+  .title {
+    font-size: 20px;
+  }
+  .sidebarContainer {
+    font-size: 100%;
+  }
 }
 
-@media (max-width: 760px){
-   .title{
-      font-size: 18px;
-   }
-   .sidebarContainer{
-      font-size: 14px;
-   }
+@media (max-width: 760px) {
+  .title {
+    font-size: 18px;
+  }
+  .sidebarContainer {
+    font-size: 14px;
+  }
 
-   .toogle{
-      display: flex;
-   }
-
+  .toogle {
+    display: flex;
+  }
 }
 
-@media (max-width: 480px){
-   .title{
-      font-size: 16px;
-   }
-   
-   .sidebarContainer{
-      font-size: 10px;
-   }
+@media (max-width: 480px) {
+  .title {
+    font-size: 16px;
+  }
 
+  .sidebarContainer {
+    font-size: 10px;
+  }
 }
