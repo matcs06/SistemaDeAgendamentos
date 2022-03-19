@@ -77,7 +77,7 @@ function CustomerInfo(props:any){
                <span>Insira o DD antes do número, Ex: 98991443355</span>
            </div>
 
-           <div>
+           <div className={styles.paymentInfo}>
                <h2  className={styles.value}>Valor: {props.router.query.servicePrice} R$ </h2>
                <h2  className={styles.payment}>Pagamento é feito no momento do serviço</h2>
            </div>

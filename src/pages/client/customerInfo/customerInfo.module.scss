@@ -39,27 +39,33 @@
     color: rgba($color: #fff, $alpha: 0.5);
     font-size: 13px;
     font-family: "Roboto";
+    margin: 0;
+    padding: 0;
   }
+}
+
+.paymentInfo {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.value {
+  font-family: "Roboto";
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 20px 0 0 0px;
+  font-size: 16px;
+  color: #d8d6d6;
 }
 
 .payment {
   font-family: "Roboto";
   margin-bottom: 20px;
-  margin-top: 15px;
+  margin-top: 20px;
   font-weight: lighter;
   color: #a5a5a5;
-  padding: 0 0 0 10px;
   font-size: 14px;
-}
-
-.value {
-  font-family: "Roboto";
-  margin-bottom: 10px;
-  margin-top: 20px;
-  font-weight: bold;
-  padding: 20px 0 0 10px;
-  font-size: 16px;
-  color: #d8d6d6;
 }
 
 .buttonContainer {
