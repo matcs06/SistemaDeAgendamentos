@@ -1,56 +1,58 @@
-*{
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-:root{
-   --white: #FFFFFF;
-   --gray-backg: #D5D9DE;
-   --lilac-button: #3C2841;
-   --lilac-backg: #231227;
-   --sidebar-width: 280px;
-   --display-header:flex;
-   --toogle-color:white;
+:root {
+  --white: #ffffff;
+  --gray-backg: #d5d9de;
+  --lilac-button: #3c2841;
+  --lilac-backg: #231227;
+  --sidebar-width: 280px;
+  --display-header: flex;
+  --toogle-color: white;
+  --togleRotateDeg: 0deg;
 
-   -webkit-touch-callout:none;
-   -webkit-user-select:none;
-   -khtml-user-select:none;
-   -moz-user-select:none;
-   -ms-user-select:none;
-   user-select:none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
-   -webkit-tap-highlight-color:rgba(0,0,0,0);
-
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media (max-width: 1080px){
-   html{
-      font-size: 93.75%;
-   }
-
-}
-
-@media (max-width: 720px){
-   html{
-      font-size: 87.5%;
-   }
-
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
 }
 
-body{
-   background: var(--lilac-backg);
-   color: var(--white);
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
 }
 
-body, input, textarea, select, button{
-   font: 400 1 rem "Roboto", sans-serif;
+body {
+  background: var(--lilac-backg);
+  color: var(--white);
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font: 400 1 rem "Roboto", sans-serif;
 }
 
 button {
-   cursor: pointer;
+  cursor: pointer;
 }
 
-a{
-   color: inherit;
-   text-decoration: none;
+a {
+  color: inherit;
+  text-decoration: none;
 }

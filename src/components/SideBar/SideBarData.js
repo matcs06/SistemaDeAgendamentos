@@ -4,6 +4,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
+import AirlineSeatReclineExtraIcon from '@mui/icons-material/AirlineSeatReclineExtra';
 
 export const SideBarData = [
    {
@@ -35,5 +36,10 @@ export const SideBarData = [
       title: "Ifinance",
       icon: <PriceChangeIcon />,
       link: "admin/finance/"
-   }
+   },
+   {
+      title: "Site do Cliente",
+      icon: <AirlineSeatReclineExtraIcon/>,
+      link: "admin/openClient/"
+   },
 ]
