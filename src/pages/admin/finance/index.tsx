@@ -110,7 +110,7 @@ const Finance = () => {
                   <ArrowDownwardIcon sx={{ color: "#4ECB71" }}/>
               </div>
               
-              <p className={styles.value}>R$ {rincome}</p>
+              <p className={styles.value}>R$ {rincome.toFixed(2)}</p>
               
            </div>
            <div className={styles.cardType}>
@@ -118,7 +118,7 @@ const Finance = () => {
                  <p className={styles.type}>Saídas</p>
                  <ArrowUpwardIcon sx={{ color: "#CB4E4E" }}/>
               </div>
-              <p className={styles.value}>R$ {routcome}</p>
+              <p className={styles.value}>R$ {routcome.toFixed(2)}</p>
            </div>
            <div className={styles.cardType} id={styles["total"]}>
               <div className={styles.topCard}>
@@ -126,7 +126,7 @@ const Finance = () => {
                  <AttachMoneyIcon sx={{ color: "#fff" }}/>
               </div>
               
-              <p className={styles.value}>R$ {rincome + routcome}</p>
+              <p className={styles.value}>R$ {(rincome + routcome).toFixed(2)}</p>
            </div>
         </div>
         <div className={styles.addNewTransaction} onClick={()=>{setShowModal(true)}}>
